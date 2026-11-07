@@ -474,3 +474,126 @@ body {
     font-size: 0.75rem;
   }
 }
+
+
+
+/* ─────────────────────────────────────────────────────────────
+   GujPsychSurvey — Calm Research Aurora visual refresh
+   Vercel-ready, progressive enhancement only.
+   ───────────────────────────────────────────────────────────── */
+:root {
+  --primary: #2446a8;
+  --primary-hover: #19347f;
+  --secondary: #0f8f83;
+  --secondary-soft: #e6f7f5;
+  --secondary-mint: #effaf8;
+  --secondary-text: #0f625c;
+  --canvas: #f7f9fc;
+  --sub-surface: #f0f4fa;
+  --card: rgba(255,255,255,.92);
+  --border: #dbe3ef;
+  --border-strong: #c4d0e0;
+  --text: #14213d;
+  --text-secondary: #52627a;
+  --crisis: #c93f55;
+  --shadow-1: 0 8px 28px rgba(30,58,138,.06);
+  --shadow-2: 0 18px 50px rgba(30,58,138,.12);
+}
+
+html { scroll-behavior: smooth; }
+body {
+  background:
+    radial-gradient(circle at 10% 0%, rgba(99,102,241,.07), transparent 32rem),
+    radial-gradient(circle at 90% 12%, rgba(20,184,166,.06), transparent 28rem),
+    var(--canvas);
+}
+header.sticky {
+  background: rgba(255,255,255,.86) !important;
+  box-shadow: 0 1px 0 rgba(15,23,42,.05);
+}
+header.sticky > div { max-width: 1320px; }
+
+.hero, section:first-of-type {
+  position: relative;
+}
+section:first-of-type::before {
+  content: "";
+  position: absolute;
+  width: 420px;
+  height: 420px;
+  right: -180px;
+  top: -170px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(99,102,241,.12), rgba(20,184,166,.08));
+  filter: blur(10px);
+  pointer-events: none;
+}
+.headline-xl {
+  letter-spacing: -0.035em;
+  background: linear-gradient(110deg,#172554 0%,#2446a8 52%,#0f766e 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.headline-lg { letter-spacing: -.025em; }
+
+.card-elevation-1 {
+  border-color: rgba(196,208,224,.85);
+  box-shadow: var(--shadow-1);
+  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+}
+.card-elevation-1:hover {
+  transform: translateY(-3px);
+  border-color: rgba(36,70,168,.28);
+  box-shadow: var(--shadow-2);
+}
+.btn-primary, .btn-secondary, .btn-crisis {
+  border-radius: 12px;
+  transition: transform .16s ease, box-shadow .16s ease, background-color .16s ease;
+}
+.btn-primary:hover, .btn-secondary:hover, .btn-crisis:hover {
+  transform: translateY(-1px);
+}
+.btn-primary { box-shadow: 0 8px 22px rgba(36,70,168,.18); }
+
+.badge-pill { backdrop-filter: blur(8px); }
+
+#quick-lookup-form > div {
+  box-shadow: 0 10px 35px rgba(15,23,42,.06);
+}
+#quick-lookup-input {
+  background: rgba(248,250,252,.9) !important;
+  border-color: #d5deeb !important;
+  transition: box-shadow .2s ease, border-color .2s ease;
+}
+#quick-lookup-input:focus {
+  border-color: #6b7fd6 !important;
+  box-shadow: 0 0 0 4px rgba(99,102,241,.10);
+}
+
+#stat-active-count, #stat-archived-count, #stat-languages-count, #stat-scales-count {
+  letter-spacing: -.04em;
+}
+
+.crisis-banner {
+  background: linear-gradient(90deg, rgba(255,241,242,.95), rgba(255,248,248,.95)) !important;
+}
+
+@media (max-width: 640px) {
+  .headline-xl {
+    font-size: 2rem;
+    line-height: 2.35rem;
+  }
+  .crisis-banner { padding-top: .65rem !important; padding-bottom: .65rem !important; }
+  .card-elevation-1:hover { transform: none; }
+}
+
+/* Respect users who prefer reduced motion. */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+}
