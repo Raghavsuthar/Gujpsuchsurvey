@@ -176,5 +176,18 @@
     "success_desc": "Your protocol has been queued for honorary moderator review. You may download your submission as a JSON record.",
     "download_json": "Download submission as JSON"
   },
-  "sample_ribbon": "Demonstration / Sample Data Mode — Values shown are for academic illustrative purposes."
+  "sample_ribbon": "Demonstration / Sample Data Mode — Values shown are for academic illustrative purposes.",
+  "share": {
+    "site_title": "Share GujPsychSurvey",
+    "site_desc": "Help connect researchers and public participants with verified mental health studies.",
+    "whatsapp": "WhatsApp",
+    "telegram": "Telegram",
+    "linkedin": "LinkedIn",
+    "x": "X (Twitter)",
+    "email": "Email",
+    "copy": "Copy Link",
+    "copied": "Link copied to clipboard!",
+    "survey_btn": "Share Study",
+    "survey_copied": "Direct survey link copied to clipboard!"
+  }
 }

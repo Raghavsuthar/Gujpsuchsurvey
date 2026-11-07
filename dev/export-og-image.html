@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GujPsychSurvey — Asset Generator &amp; PNG Exporter</title>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #F8FAFC; color: #0F172A; padding: 2rem; margin: 0; }
+    .card { background: white; border-radius: 12px; border: 1px solid #E2E8F0; padding: 1.5rem; max-width: 1240px; margin: 0 auto 2rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); }
+    h1 { margin-top: 0; color: #1E3A8A; font-size: 1.5rem; }
+    p { color: #475569; font-size: 0.95rem; line-height: 1.5; }
+    .btn { display: inline-flex; align-items: center; gap: 8px; background: #1E3A8A; color: white; border: none; padding: 10px 18px; border-radius: 8px; font-weight: 600; font-size: 0.875rem; cursor: pointer; text-decoration: none; margin-right: 10px; margin-bottom: 10px; }
+    .btn:hover { background: #172554; }
+    .btn-secondary { background: #EEF2FF; color: #1E3A8A; border: 1px solid #C7D2FE; }
+    .btn-secondary:hover { background: #E0E7FF; }
+    .preview-box { border: 1px solid #CBD5E1; border-radius: 8px; overflow: hidden; background: #F1F5F9; margin-top: 1rem; text-align: center; }
+    .preview-box img { max-width: 100%; height: auto; display: block; }
+    .status { padding: 8px 12px; background: #ECFDF5; border: 1px solid #A7F3D0; color: #065F46; border-radius: 6px; font-size: 0.85rem; margin-top: 1rem; display: none; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>GujPsychSurvey Asset Exporter (Client-side Canvas)</h1>
+    <p>
+      This developer tool renders the master SVG vectors (<code>assets/og-image.svg</code> and <code>assets/favicon.svg</code>) into exact raster PNG files for OpenGraph crawlers (WhatsApp, X, Facebook, LinkedIn, Telegram) that do not parse SVG images.
+    </p>
+
+    <div style="margin-top: 1.5rem;">
+      <button class="btn" id="btnExportAll">🚀 Export All PNG Assets</button>
+      <button class="btn btn-secondary" id="btnExportOg">Export og-image.png (1200x630)</button>
+      <button class="btn btn-secondary" id="btnExportFavicon">Export favicon-32.png (32x32)</button>
+      <button class="btn btn-secondary" id="btnExportApple">Export apple-touch-icon.png (180x180)</button>
+    </div>
+
+    <div id="status" class="status"></div>
+
+    <h2 style="font-size: 1.1rem; margin-top: 2rem; color: #334155;">Live Preview (1200x630 OpenGraph Card)</h2>
+    <div class="preview-box">
+      <img id="ogPreview" src="../assets/og-image.svg" alt="OpenGraph Preview" />
+    </div>
+  </div>
+
+  <canvas id="exportCanvas" style="display: none;"></canvas>
+
+  <script>
+    async function svgToPngBlob(svgUrl, targetWidth, targetHeight) {
+      return new Promise((resolve, reject) => {
+        const img = new Image();
+        img.crossOrigin = 'anonymous';
+        img.onload = () => {
+          const canvas = document.getElementById('exportCanvas');
+          canvas.width = targetWidth;
+          canvas.height = targetHeight;
+          const ctx = canvas.getContext('2d');
+          ctx.clearRect(0, 0, targetWidth, targetHeight);
+          ctx.drawImage(img, 0, 0, targetWidth, targetHeight);
+          canvas.toBlob(blob => {
+            if (blob) resolve(blob);
+            else reject(new Error('Canvas export failed'));
+          }, 'image/png');
+        };
+        img.onerror = (e) => reject(e);
+        img.src = svgUrl;
+      });
+    }
+
+    function triggerDownload(blob, filename) {
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      setTimeout(() => URL.revokeObjectURL(url), 1000);
+    }
+
+    const statusEl = document.getElementById('status');
+    function showMsg(msg) {
+      statusEl.textContent = msg;
+      statusEl.style.display = 'block';
+    }
+
+    document.getElementById('btnExportOg').addEventListener('click', async () => {
+      try {
+        showMsg('Rendering 1200x630 og-image.png...');
+        const blob = await svgToPngBlob('../assets/og-image.svg', 1200, 630);
+        triggerDownload(blob, 'og-image.png');
+        showMsg('✓ Downloaded og-image.png (1200x630). Place in assets/ folder!');
+      } catch (e) {
+        showMsg('Error exporting og-image: ' + e.message);
+      }
+    });
+
+    document.getElementById('btnExportFavicon').addEventListener('click', async () => {
+      try {
+        showMsg('Rendering 32x32 favicon-32.png...');
+        const blob = await svgToPngBlob('../assets/favicon.svg', 32, 32);
+        triggerDownload(blob, 'favicon-32.png');
+        showMsg('✓ Downloaded favicon-32.png (32x32). Place in assets/ folder!');
+      } catch (e) {
+        showMsg('Error exporting favicon: ' + e.message);
+      }
+    });
+
+    document.getElementById('btnExportApple').addEventListener('click', async () => {
+      try {
+        showMsg('Rendering 180x180 apple-touch-icon.png...');
+        const blob = await svgToPngBlob('../assets/favicon.svg', 180, 180);
+        triggerDownload(blob, 'apple-touch-icon.png');
+        showMsg('✓ Downloaded apple-touch-icon.png (180x180). Place in assets/ folder!');
+      } catch (e) {
+        showMsg('Error exporting apple icon: ' + e.message);
+      }
+    });
+
+    document.getElementById('btnExportAll').addEventListener('click', async () => {
+      try {
+        showMsg('Rendering all PNGs...');
+        const ogBlob = await svgToPngBlob('../assets/og-image.svg', 1200, 630);
+        triggerDownload(ogBlob, 'og-image.png');
+        await new Promise(r => setTimeout(r, 400));
+        const favBlob = await svgToPngBlob('../assets/favicon.svg', 32, 32);
+        triggerDownload(favBlob, 'favicon-32.png');
+        await new Promise(r => setTimeout(r, 400));
+        const appleBlob = await svgToPngBlob('../assets/favicon.svg', 180, 180);
+        triggerDownload(appleBlob, 'apple-touch-icon.png');
+        showMsg('✓ All 3 PNG assets generated and downloaded! Save them to /assets/.');
+      } catch (e) {
+        showMsg('Error exporting assets: ' + e.message);
+      }
+    });
+  </script>
+</body>
+</html>

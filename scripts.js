@@ -6,8 +6,16 @@
 (function () {
   'use strict';
 
+  // Base URL calculation so that both root/custom domain and subpath repositories work seamlessly
+  const BASE = new URL('.', document.currentScript?.src || location.href).href;
+
+  function resolveUrl(path) {
+    return new URL(path.replace(/^\//, ''), BASE).href;
+  }
+
   // Global App State
   window.GujPsychApp = {
+    base: BASE,
     lang: 'en',
     theme: 'light',
     config: null,
@@ -85,6 +93,70 @@
   }
   window.showToast = showToast;
 
+  // Social & Deep-Link Sharing Utilities
+  function shareSite(platform) {
+    const url = window.GujPsychApp.config?.siteUrl || window.location.href;
+    const title = 'GujPsychSurvey — Psychiatry & Mental Health Research Directory';
+    const text = 'Discover IEC-cleared mental health research surveys and validated psychological instruments in Gujarat & India:';
+
+    if (platform === 'native' && navigator.share) {
+      navigator.share({ title, text, url }).catch(() => {});
+      return;
+    }
+
+    let shareUrl = '';
+    switch (platform) {
+      case 'whatsapp':
+        shareUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(title + '\n' + text + '\n' + url)}`;
+        break;
+      case 'telegram':
+        shareUrl = `https://t.me/share/url?url=${encodeURIComponent(url)}&text=${encodeURIComponent(title)}`;
+        break;
+      case 'linkedin':
+        shareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`;
+        break;
+      case 'x':
+        shareUrl = `https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(title)}`;
+        break;
+      case 'email':
+        shareUrl = `mailto:?subject=${encodeURIComponent(title)}&body=${encodeURIComponent(text + '\n\n' + url)}`;
+        break;
+      default:
+        copyPageLink();
+        return;
+    }
+    if (shareUrl) {
+      window.open(shareUrl, '_blank', 'noopener,noreferrer');
+    }
+  }
+  window.shareSite = shareSite;
+
+  async function copyPageLink() {
+    const url = window.location.href;
+    try {
+      await navigator.clipboard.writeText(url);
+      const msg = window.GujPsychApp.i18nStrings?.share?.copied || 'Link copied to clipboard!';
+      showToast(msg, 'success');
+    } catch (e) {
+      showToast('Could not copy link to clipboard', 'error');
+    }
+  }
+  window.copyPageLink = copyPageLink;
+
+  async function copySurveyLink(ref) {
+    const base = window.GujPsychApp.config?.siteUrl || (window.location.origin + window.location.pathname.replace(/[^/]*$/, ''));
+    const cleanBase = base.endsWith('/') ? base : base + '/';
+    const url = `${cleanBase}active.html?ref=${encodeURIComponent(ref)}`;
+    try {
+      await navigator.clipboard.writeText(url);
+      const msg = window.GujPsychApp.i18nStrings?.share?.survey_copied || `Direct link for ref ${ref} copied to clipboard!`;
+      showToast(msg, 'success');
+    } catch (e) {
+      showToast(`Ref: ${ref} copied`, 'info');
+    }
+  }
+  window.copySurveyLink = copySurveyLink;
+
   // Theme Manager (Strictly Light Theme)
   function initTheme() {
     applyTheme('light');
@@ -110,7 +182,7 @@
     document.documentElement.lang = lang;
 
     try {
-      const res = await fetch(`/data/i18n/${lang}.json`);
+      const res = await fetch(resolveUrl(`data/i18n/${lang}.json`));
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       window.GujPsychApp.i18nStrings = await res.json();
       applyI18n();
@@ -177,7 +249,7 @@
     const navPlaceholder = document.getElementById('nav-placeholder');
     if (navPlaceholder) {
       try {
-        const res = await fetch('/nav.html');
+        const res = await fetch(resolveUrl('nav.html'));
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         navPlaceholder.innerHTML = await res.text();
         initNavEvents();
@@ -190,7 +262,7 @@
     const footerPlaceholder = document.getElementById('footer-placeholder');
     if (footerPlaceholder) {
       try {
-        const res = await fetch('/footer.html');
+        const res = await fetch(resolveUrl('footer.html'));
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         footerPlaceholder.innerHTML = await res.text();
         initFooterEvents();
@@ -375,37 +447,37 @@
   // Data Loaders
   async function loadConfig() {
     try {
-      const res = await fetch('/data/config.json');
+      const res = await fetch(resolveUrl('data/config.json'));
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       window.GujPsychApp.config = await res.json();
       applyConfigToUI();
       return window.GujPsychApp.config;
     } catch (err) {
-      console.warn('Error loading /data/config.json:', err);
+      console.warn('Error loading config.json:', err);
       return null;
     }
   }
 
   async function loadSurveys() {
     try {
-      const res = await fetch('/data/surveys.json');
+      const res = await fetch(resolveUrl('data/surveys.json'));
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       window.GujPsychApp.surveys = await res.json();
       return window.GujPsychApp.surveys;
     } catch (err) {
-      console.warn('Error loading /data/surveys.json:', err);
+      console.warn('Error loading surveys.json:', err);
       return [];
     }
   }
 
   async function loadScales() {
     try {
-      const res = await fetch('/data/scales.json');
+      const res = await fetch(resolveUrl('data/scales.json'));
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       window.GujPsychApp.scales = await res.json();
       return window.GujPsychApp.scales;
     } catch (err) {
-      console.warn('Error loading /data/scales.json:', err);
+      console.warn('Error loading scales.json:', err);
       return [];
     }
   }
@@ -593,7 +665,9 @@
 
   function createSurveyCard(study, isActive) {
     const card = document.createElement('div');
-    card.className = 'card-elevation-1 p-6 flex flex-col justify-between border border-slate-200 bg-white rounded-2xl';
+    card.id = `mobile-survey-${study.ref}`;
+    card.setAttribute('data-ref', study.ref);
+    card.className = 'card-elevation-1 p-6 flex flex-col justify-between border border-slate-200 bg-white rounded-2xl transition-all';
 
     const headerRow = document.createElement('div');
     headerRow.className = 'flex items-center justify-between gap-2 mb-3';
@@ -653,10 +727,27 @@
     const footerRow = document.createElement('div');
     footerRow.className = 'pt-4 border-t border-slate-100 flex items-center justify-between gap-2 mt-auto';
 
+    const refWrap = document.createElement('div');
+    refWrap.className = 'flex items-center gap-2';
+
     const refDiv = document.createElement('span');
     refDiv.className = 'text-xs font-mono text-slate-400';
     refDiv.textContent = study.ref;
-    footerRow.appendChild(refDiv);
+    refWrap.appendChild(refDiv);
+
+    if (isActive) {
+      const shareBtn = document.createElement('button');
+      shareBtn.type = 'button';
+      shareBtn.className = 'inline-flex items-center gap-1 text-[11px] font-semibold text-indigo-700 hover:text-indigo-900 transition';
+      shareBtn.title = 'Copy direct link to this study';
+      shareBtn.innerHTML = `<span class="material-symbols-outlined text-[15px]">share</span>`;
+      shareBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        window.copySurveyLink(study.ref);
+      });
+      refWrap.appendChild(shareBtn);
+    }
+    footerRow.appendChild(refWrap);
 
     if (isActive) {
       const openBtn = document.createElement('button');
@@ -886,6 +977,22 @@
 
     // Initial render
     applyFilters();
+
+    // Deep-link survey ref handler (e.g. active.html?ref=GUJ-PSY-2026-001)
+    const targetRef = urlParams.get('ref');
+    if (targetRef) {
+      setTimeout(() => {
+        const targetEl = document.getElementById(`survey-${targetRef}`) || document.getElementById(`mobile-survey-${targetRef}`) || document.querySelector(`[data-ref="${targetRef}"]`);
+        if (targetEl) {
+          targetEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          targetEl.classList.add('ring-2', 'ring-indigo-600', 'bg-indigo-50/60');
+          setTimeout(() => {
+            targetEl.classList.remove('ring-2', 'ring-indigo-600', 'bg-indigo-50/60');
+          }, 4500);
+          showToast(`Focused on study record: ${targetRef}`, 'info');
+        }
+      }, 250);
+    }
   }
 
   function populateDynamicFilterOptions(surveys, domainSelect, languageSelect, cohortSelect) {
@@ -969,6 +1076,8 @@
 
     pageItems.forEach(study => {
       const tr = document.createElement('tr');
+      tr.id = `survey-${study.ref}`;
+      tr.setAttribute('data-ref', study.ref);
       tr.className = 'border-b border-slate-200 hover:bg-slate-50/70 transition-colors';
 
       // 1. REF
@@ -1056,15 +1165,23 @@
         btn.innerHTML = `<span>Open Survey</span><span class="material-symbols-outlined text-sm">open_in_new</span>`;
         btn.addEventListener('click', () => openSurveyModal(study.surveyUrl));
 
+        const shareBtn = document.createElement('button');
+        shareBtn.type = 'button';
+        shareBtn.className = 'inline-flex items-center gap-1 text-[11px] font-semibold text-indigo-700 hover:text-indigo-900 mt-1.5 ml-auto';
+        shareBtn.innerHTML = `<span class="material-symbols-outlined text-[13px]">share</span><span>Share</span>`;
+        shareBtn.title = 'Copy direct link to this study';
+        shareBtn.addEventListener('click', () => window.copySurveyLink(study.ref));
+
         const reportLink = document.createElement('button');
         reportLink.type = 'button';
-        reportLink.className = 'block text-[11px] text-slate-400 hover:text-rose-600 mt-2 ml-auto';
+        reportLink.className = 'block text-[11px] text-slate-400 hover:text-rose-600 mt-1 ml-auto';
         reportLink.textContent = 'Report survey';
         reportLink.addEventListener('click', () => {
           showToast(`Report queued for moderator review regarding ref: ${study.ref}`, 'info');
         });
 
         tdAction.appendChild(btn);
+        tdAction.appendChild(shareBtn);
         tdAction.appendChild(reportLink);
       } else {
         const closedDiv = document.createElement('div');

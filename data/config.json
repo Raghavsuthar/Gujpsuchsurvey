@@ -1,6 +1,7 @@
 {
   "siteName": "GujPsychSurvey",
   "siteSubtitle": "Mental Health Research Repository",
+  "siteUrl": "https://YOUR-GITHUB-USERNAME.github.io/YOUR-REPO-NAME/",
   "isSampleData": true,
   "showPiEmail": false,
   "maintainer": {
