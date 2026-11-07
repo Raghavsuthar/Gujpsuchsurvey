@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light">
+  <title>Mental Health Scales & Translations — GujPsychSurvey</title>
+  <meta name="description" content="Directory of validated psychiatric, psychological, and psychometric rating scales with Gujarati and Hindi translation and publication statuses.">
+  <meta property="og:title" content="Validated Mental Health Scales & Translations — GujPsychSurvey">
+  <meta property="og:description" content="Reference directory of validated rating scales for depression, anxiety, cognition, sleep, and quality of life in Gujarati and Hindi.">
+
+  <!-- Fonts & Styles -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Noto+Sans+Gujarati:wght@400;500;600;700&family=Noto+Sans:wght@400;500;600;700&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/tailwind-config.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="/scripts.js" defer></script>
+</head>
+<body class="bg-slate-50 text-slate-900 flex flex-col min-h-screen">
+
+  <div id="nav-placeholder"></div>
+
+  <!-- Persistent Crisis Banner -->
+  <div class="crisis-banner bg-rose-50 border-l-4 border-rose-600 px-4 py-3">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 text-xs sm:text-sm text-rose-950">
+      <div class="flex items-center gap-2">
+        <span class="material-symbols-outlined text-rose-600 text-lg shrink-0">emergency</span>
+        <span data-i18n="crisis_banner_text">In immediate emotional distress? Free, 24/7 confidential crisis support is available.</span>
+      </div>
+      <div class="flex items-center gap-2 shrink-0">
+        <a href="tel:14416" class="btn-crisis text-xs py-1.5 px-3 h-8 min-h-0">
+          <span class="material-symbols-outlined text-sm">call</span>
+          <span class="tabular-nums font-bold">Tele-MANAS 14416</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <main id="main-content" class="flex-grow py-8 sm:py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+      
+      <!-- Breadcrumb -->
+      <nav class="flex items-center gap-2 text-xs text-slate-500" aria-label="Breadcrumb">
+        <a href="index.html" class="hover:underline">Home</a>
+        <span>/</span>
+        <span class="text-slate-800 font-semibold" aria-current="page">Mental Health Scales</span>
+      </nav>
+
+      <!-- Page Header -->
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+        <div>
+          <span class="badge-pill bg-teal-100 text-teal-800 mb-3" data-i18n="scales_page.badge">
+            <span class="material-symbols-outlined text-xs">tune</span>
+            Validated Instrument Reference
+          </span>
+          <h1 class="headline-xl text-slate-900 font-extrabold tracking-tight mb-2" data-i18n="scales_page.title">
+            Mental Health Scales & Translations
+          </h1>
+          <p class="body-md text-slate-600 max-w-3xl" data-i18n="scales_page.intro">
+            A curated compendium of psychiatric and psychological instruments, with publication and translation validation status for Gujarati and Hindi language versions.
+          </p>
+        </div>
+        <div class="shrink-0 flex items-center gap-2">
+          <span id="scales-count-badge" class="badge-pill bg-indigo-50 text-indigo-700 text-xs font-mono font-bold">
+            22 scales
+          </span>
+        </div>
+      </div>
+
+      <!-- Maintainer Guidance Note -->
+      <div class="p-4 bg-slate-100 border-l-4 border-indigo-600 rounded-r-xl text-xs text-slate-600 flex items-center justify-between gap-4">
+        <div class="flex items-center gap-2">
+          <span class="material-symbols-outlined text-indigo-600">code</span>
+          <span data-i18n="scales_page.maintainer_note">Maintainers: add links and records by editing data/scales.json in the repository.</span>
+        </div>
+        <a href="maintainer.html#about" class="font-semibold text-indigo-700 hover:underline shrink-0">
+          Learn How &rarr;
+        </a>
+      </div>
+
+      <!-- Search & Filters -->
+      <div class="card-elevation-1 p-6 bg-white border border-slate-200 rounded-2xl space-y-4">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-4 items-center">
+          
+          <!-- Search input -->
+          <div class="md:col-span-6 relative">
+            <span class="material-symbols-outlined absolute left-3.5 top-3 text-slate-400">search</span>
+            <input 
+              id="scales-search-input" 
+              type="text" 
+              class="w-full pl-10 pr-4 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-indigo-600 text-slate-900"
+              placeholder="Search scales by name, abbreviation, author..."
+              data-i18n-placeholder="scales_page.search_placeholder"
+            >
+          </div>
+
+          <!-- Domain Select -->
+          <div class="md:col-span-3">
+            <select id="scales-domain-select" class="w-full p-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs focus:ring-2 focus:ring-indigo-600 text-slate-900">
+              <option value="all" data-i18n="scales_page.domain_filter">All Domains</option>
+            </select>
+          </div>
+
+          <!-- Status Select -->
+          <div class="md:col-span-3">
+            <select id="scales-status-select" class="w-full p-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs focus:ring-2 focus:ring-indigo-600 text-slate-900">
+              <option value="all" data-i18n="scales_page.all_statuses">All Gujarati Statuses</option>
+              <option value="published" data-i18n="scales_page.published">Published & Validated</option>
+              <option value="unknown" data-i18n="scales_page.unknown">Status Unknown</option>
+              <option value="unpublished" data-i18n="scales_page.unpublished">Unpublished</option>
+            </select>
+          </div>
+
+        </div>
+
+        <!-- Quick domain chips -->
+        <div class="flex flex-wrap items-center gap-2 pt-2 border-t border-slate-100 text-xs">
+          <span class="text-slate-500 font-medium">Domain:</span>
+          <button type="button" class="domain-chip px-3 py-1 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700" data-domain="all">All</button>
+          <button type="button" class="domain-chip px-3 py-1 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700" data-domain="Depression & Anxiety">Depression & Anxiety</button>
+          <button type="button" class="domain-chip px-3 py-1 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700" data-domain="Cognition">Cognition</button>
+          <button type="button" class="domain-chip px-3 py-1 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700" data-domain="Sleep">Sleep</button>
+          <button type="button" class="domain-chip px-3 py-1 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700" data-domain="Quality of Life">Quality of Life</button>
+        </div>
+      </div>
+
+      <!-- Scales Table -->
+      <div class="card-elevation-1 bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm">
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse">
+            <thead class="bg-slate-100 border-b border-slate-200 text-[11px] font-bold uppercase tracking-wider text-slate-700">
+              <tr>
+                <th scope="col" class="px-4 py-3" data-i18n="scales_page.col_name">Scale Name & Abbreviation</th>
+                <th scope="col" class="px-4 py-3" data-i18n="scales_page.col_domain">Domain</th>
+                <th scope="col" class="px-4 py-3" data-i18n="scales_page.col_gujarati">Gujarati Version</th>
+                <th scope="col" class="px-4 py-3" data-i18n="scales_page.col_hindi">Hindi Version</th>
+                <th scope="col" class="px-4 py-3" data-i18n="scales_page.col_authors">Developer / Authors</th>
+                <th scope="col" class="px-4 py-3 text-right" data-i18n="scales_page.col_link">Repository Access</th>
+              </tr>
+            </thead>
+            <!-- ALWAYS populated via DOM APIs (textContent) in scripts.js -->
+            <tbody id="scalesBody">
+              <!-- Populated by scripts.js -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Self-Reflection Note -->
+      <div class="p-6 bg-indigo-50/50 border border-indigo-100 rounded-2xl text-xs text-slate-600 space-y-2">
+        <h3 class="font-bold text-slate-800 text-sm flex items-center gap-1.5">
+          <span class="material-symbols-outlined text-indigo-600">psychology_alt</span>
+          Clinical Instrumentation Guidance
+        </h3>
+        <p>
+          Validated psychiatric scales are intended for standardized epidemiological assessment and clinical screening by qualified medical practitioners. They do not constitute autonomous diagnostic judgment. If you are experiencing symptoms of distress, please connect with a qualified mental health specialist or call the 24/7 Tele-MANAS helpline at 14416.
+        </p>
+      </div>
+
+    </div>
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+</body>
+</html>

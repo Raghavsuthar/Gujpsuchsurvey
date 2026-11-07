@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light">
+  <title>For Participants — Rights & Voluntary Participation — GujPsychSurvey</title>
+  <meta name="description" content="Learn your rights as a mental health research participant. Why participate, essential safety cautions, and participant interest registration.">
+  <meta property="og:title" content="For Participants — GujPsychSurvey">
+  <meta property="og:description" content="Understand participant rights, voluntariness, data anonymity, and join voluntary studies.">
+
+  <!-- Fonts & Styles -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Noto+Sans+Gujarati:wght@400;500;600;700&family=Noto+Sans:wght@400;500;600;700&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/tailwind-config.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="/scripts.js" defer></script>
+</head>
+<body class="bg-slate-50 text-slate-900 flex flex-col min-h-screen">
+
+  <div id="nav-placeholder"></div>
+
+  <!-- Persistent Crisis Banner -->
+  <div class="crisis-banner bg-rose-50 border-l-4 border-rose-600 px-4 py-3">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 text-xs sm:text-sm text-rose-950">
+      <div class="flex items-center gap-2">
+        <span class="material-symbols-outlined text-rose-600 text-lg shrink-0">emergency</span>
+        <span data-i18n="crisis_banner_text">In immediate emotional distress? Free, 24/7 confidential crisis support is available.</span>
+      </div>
+      <div class="flex items-center gap-2 shrink-0">
+        <a href="tel:14416" class="btn-crisis text-xs py-1.5 px-3 h-8 min-h-0">
+          <span class="material-symbols-outlined text-sm">call</span>
+          <span class="tabular-nums font-bold">Tele-MANAS 14416</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <main id="main-content" class="flex-grow py-8 sm:py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+      
+      <!-- Breadcrumb -->
+      <nav class="flex items-center gap-2 text-xs text-slate-500" aria-label="Breadcrumb">
+        <a href="index.html" class="hover:underline">Home</a>
+        <span>/</span>
+        <span class="text-slate-800 font-semibold" aria-current="page">For Participants</span>
+      </nav>
+
+      <!-- Page Header -->
+      <div class="border-b border-slate-200 pb-8">
+        <span class="badge-pill bg-teal-100 text-teal-800 mb-3">
+          <span class="material-symbols-outlined text-xs">shield_person</span>
+          Participant Protection & Voice
+        </span>
+        <h1 class="headline-xl text-slate-900 font-extrabold tracking-tight mb-3">
+          Participating in Mental Health Research
+        </h1>
+        <p class="body-md text-slate-600 max-w-3xl">
+          Everything you need to know about your rights, protections, and voluntary role in building psychiatric knowledge in Gujarat and across India.
+        </p>
+      </div>
+
+      <!-- SECTION 1: #why (Why Participate) -->
+      <section id="why" class="scroll-mt-24 space-y-6">
+        <div>
+          <h2 class="headline-md font-bold text-slate-900 mb-2">Why Participate in Academic Research?</h2>
+          <p class="text-xs text-slate-600">
+            Psychiatric epidemiology and cultural psychology rely on genuine community participation to design better healthcare interventions.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="card-elevation-1 p-6 bg-white border border-slate-200 rounded-2xl space-y-3">
+            <div class="w-10 h-10 rounded-xl bg-indigo-50 text-indigo-700 flex items-center justify-center">
+              <span class="material-symbols-outlined text-2xl">translate</span>
+            </div>
+            <h3 class="font-bold text-base text-slate-900">Cultural & Linguistic Relevance</h3>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              Most psychological instruments were created in Western nations. Your responses help validate vernacular Gujarati and Hindi questionnaires suited for local community idioms of distress.
+            </p>
+          </div>
+
+          <div class="card-elevation-1 p-6 bg-white border border-slate-200 rounded-2xl space-y-3">
+            <div class="w-10 h-10 rounded-xl bg-teal-50 text-teal-700 flex items-center justify-center">
+              <span class="material-symbols-outlined text-2xl">local_hospital</span>
+            </div>
+            <h3 class="font-bold text-base text-slate-900">Informing Public Health Policy</h3>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              Research by postgraduate residents and medical faculties shapes rural clinic staffing, postpartum screening protocols, and crisis response infrastructure across Gujarat.
+            </p>
+          </div>
+
+          <div class="card-elevation-1 p-6 bg-white border border-slate-200 rounded-2xl space-y-3">
+            <div class="w-10 h-10 rounded-xl bg-rose-50 text-rose-700 flex items-center justify-center">
+              <span class="material-symbols-outlined text-2xl">record_voice_over</span>
+            </div>
+            <h3 class="font-bold text-base text-slate-900">Reducing Community Stigma</h3>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              Answering questions about burnout, stress, sleep, or emotional health normalizes these discussions and breaks generational taboos around seeking psychiatric care.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 2: #cautions (Participant Rights & Cautions) -->
+      <section id="cautions" class="scroll-mt-24 space-y-6">
+        <div>
+          <h2 class="headline-md font-bold text-slate-900 mb-2">Participant Protections & Critical Cautions</h2>
+          <p class="text-xs text-slate-600">
+            Never compromise your personal security or privacy. Keep these absolute safeguards in mind.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          
+          <div class="card-elevation-1 p-6 bg-rose-50/60 border border-rose-200 rounded-2xl space-y-3">
+            <div class="flex items-center gap-2 text-rose-800 font-bold text-base">
+              <span class="material-symbols-outlined text-xl">gpp_bad</span>
+              <span>Red Flags: Beware of Malicious or Fake Surveys</span>
+            </div>
+            <p class="text-xs text-rose-950 leading-relaxed">
+              Legitimate academic research <strong>NEVER</strong> asks for:
+            </p>
+            <ul class="text-xs text-rose-900 space-y-1.5 list-disc list-inside">
+              <li>Bank account numbers, IFSC codes, credit card CVVs, or UPI PINs.</li>
+              <li>Aadhaar numbers or OTP SMS verification codes.</li>
+              <li>Registration or administrative participation fees.</li>
+            </ul>
+            <p class="text-xs text-rose-800 mt-2">
+              If any external questionnaire asks for financial information, immediately close the tab and report it to the moderator.
+            </p>
+          </div>
+
+          <div class="card-elevation-1 p-6 bg-white border border-slate-200 rounded-2xl space-y-3">
+            <div class="flex items-center gap-2 text-indigo-900 font-bold text-base">
+              <span class="material-symbols-outlined text-xl">verified</span>
+              <span>Your Inalienable Rights</span>
+            </div>
+            <ul class="text-xs text-slate-600 space-y-2">
+              <li><strong>100% Voluntariness:</strong> You have the absolute right to decline any question or refuse to begin.</li>
+              <li><strong>Immediate Unconditional Withdrawal:</strong> You may close the questionnaire at any second. You do not need to give any explanation.</li>
+              <li><strong>Institutional Ethics Committee (IEC) Clearance:</strong> You have the right to see the ethics registration number on the information sheet.</li>
+              <li><strong>Investigator Accountability:</strong> The PI's institutional email and affiliated college department must be clearly printed on the consent page.</li>
+            </ul>
+          </div>
+
+        </div>
+
+        <!-- Distress Guidance Callout -->
+        <div class="p-6 bg-slate-100 border border-slate-200 rounded-2xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <div class="space-y-1 text-xs">
+            <h4 class="font-bold text-sm text-slate-900 flex items-center gap-1.5">
+              <span class="material-symbols-outlined text-rose-600">health_and_safety</span>
+              What if a questionnaire causes you emotional distress?
+            </h4>
+            <p class="text-slate-600">
+              Reflecting on mood or trauma can sometimes trigger distress. If you feel uncomfortable, stop answering immediately.
+            </p>
+          </div>
+          <a href="gethelp.html" class="btn-crisis shrink-0 text-xs py-2 px-4 h-auto min-h-0">
+            <span class="material-symbols-outlined text-sm">call</span>
+            View 24/7 Helplines (14416)
+          </a>
+        </div>
+      </section>
+
+      <!-- SECTION 3: #join (Participant Interest Form) -->
+      <section id="join" class="scroll-mt-24 card-elevation-1 p-6 sm:p-8 bg-white border border-slate-200 rounded-2xl max-w-3xl mx-auto space-y-6">
+        <div>
+          <span class="badge-pill bg-indigo-50 text-indigo-700 font-bold mb-2">
+            Voluntary Roster
+          </span>
+          <h2 class="headline-md font-bold text-slate-900 mb-2">Join as a Voluntary Research Participant</h2>
+          <p class="text-xs text-slate-600">
+            Register your interest to receive periodic email notifications when new ethically approved surveys match your interests. You can unsubscribe at any time.
+          </p>
+        </div>
+
+        <form id="participant-join-form" class="space-y-5 text-xs">
+          <!-- Honeypot -->
+          <input type="text" name="website_hp" class="hidden" tabindex="-1" autocomplete="off">
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label for="participantEmail" class="block font-semibold text-slate-700 mb-1">
+                Email Address <span class="text-rose-600">*</span>
+              </label>
+              <input type="email" id="participantEmail" name="participantEmail" required class="w-full p-3 bg-slate-50 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-600 text-slate-900" placeholder="you@example.com">
+            </div>
+
+            <div>
+              <label for="participantName" class="block font-semibold text-slate-700 mb-1">
+                Name or Moniker (Optional)
+              </label>
+              <input type="text" id="participantName" name="participantName" class="w-full p-3 bg-slate-50 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-600 text-slate-900" placeholder="e.g. Voluntary Participant">
+            </div>
+          </div>
+
+          <div>
+            <label for="participantLang" class="block font-semibold text-slate-700 mb-1">
+              Preferred Questionnaire Language
+            </label>
+            <select id="participantLang" name="participantLang" class="w-full p-3 bg-slate-50 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-600 text-slate-900">
+              <option value="en">English</option>
+              <option value="gu">ગુજરાતી (Gujarati)</option>
+              <option value="hi">हिन्दी (Hindi)</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block font-semibold text-slate-700 mb-2">
+              Topics of Interest (Check all that apply)
+            </label>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+              <label class="flex items-center gap-2 cursor-pointer p-2 rounded bg-slate-50">
+                <input type="checkbox" name="participantTopics" value="sleep_burnout" class="rounded text-indigo-600" checked>
+                <span>Sleep, Shift Work & Occupational Burnout</span>
+              </label>
+              <label class="flex items-center gap-2 cursor-pointer p-2 rounded bg-slate-50">
+                <input type="checkbox" name="participantTopics" value="perinatal" class="rounded text-indigo-600">
+                <span>Perinatal & Maternal Well-being</span>
+              </label>
+              <label class="flex items-center gap-2 cursor-pointer p-2 rounded bg-slate-50">
+                <input type="checkbox" name="participantTopics" value="student_youth" class="rounded text-indigo-600">
+                <span>Student, University & Adolescent Mental Health</span>
+              </label>
+              <label class="flex items-center gap-2 cursor-pointer p-2 rounded bg-slate-50">
+                <input type="checkbox" name="participantTopics" value="geriatric" class="rounded text-indigo-600">
+                <span>Aging, Memory & Cognitive Health</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="pt-2">
+            <label class="flex items-start gap-2.5 cursor-pointer">
+              <input type="checkbox" id="participantConsent" name="participantConsent" required class="mt-0.5 rounded text-indigo-600 focus:ring-indigo-500">
+              <span class="text-slate-600">
+                I agree to receive occasional academic study invitations. My email will never be sold or shared with commercial entities. <span class="text-rose-600">*</span>
+              </span>
+            </label>
+          </div>
+
+          <div class="pt-2">
+            <button type="submit" class="btn-primary w-full justify-center">
+              <span class="material-symbols-outlined text-sm">mark_email_read</span>
+              Join Research Interest Directory
+            </button>
+          </div>
+        </form>
+      </section>
+
+    </div>
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+</body>
+</html>

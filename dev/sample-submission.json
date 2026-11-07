@@ -1,0 +1,31 @@
+{
+  "ref": "GPS-2026-099",
+  "title": "Sample Protocol: Workplace Stress and Resilience among Primary Care Physicians",
+  "titleGu": "પ્રાથમિક આરોગ્ય ચિકિત્સકોમાં કાર્યસ્થળ તણાવ અને સહનશક્તિનો અભ્યાસ",
+  "abstract": "An illustrative sample submission showing the structure required for data/surveys.json. Investigates emotional fatigue, clinical workload, and self-efficacy.",
+  "domain": "Healthcare Workers & Trauma",
+  "subDiscipline": "Occupational Psychology & Survey Research",
+  "piName": "Principal Investigator Sample",
+  "piDesignation": "Assistant Professor of Psychiatry",
+  "institution": "Department of Psychiatry, Sample Medical College",
+  "institutionalEmail": "pi.sample@samplemedcollege.ac.in",
+  "coInvestigators": "Investigator Sample B, MD",
+  "languages": [
+    "English",
+    "ગુજરાતી"
+  ],
+  "completionMinutes": 10,
+  "cohortLabel": "Primary Care Physicians & MOs",
+  "cohortType": "Doctors/Nurses/Hospital Staff",
+  "eligibility": "Full-time primary care medical officers practicing in district clinics in Gujarat.",
+  "iecName": "Sample Medical College Institutional Ethics Committee",
+  "iecRegNo": "ECR/982/Inst/GJ/2021/RR-24",
+  "iecApprovalDate": "2026-06-01",
+  "iecExpiry": "2027-05-31",
+  "platform": "Google Forms",
+  "surveyUrl": "https://forms.google.com/sample-form",
+  "startDate": "2026-06-15",
+  "endDate": "2027-06-15",
+  "status": "pending",
+  "verifiedOn": ""
+}

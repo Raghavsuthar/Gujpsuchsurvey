@@ -1,0 +1,82 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "GujPsychSurveyRecord",
+  "type": "object",
+  "required": [
+    "ref",
+    "title",
+    "abstract",
+    "domain",
+    "piName",
+    "piDesignation",
+    "institution",
+    "languages",
+    "completionMinutes",
+    "cohortType",
+    "iecName",
+    "iecRegNo",
+    "iecApprovalDate",
+    "iecExpiry",
+    "platform",
+    "surveyUrl",
+    "startDate",
+    "endDate",
+    "status"
+  ],
+  "properties": {
+    "ref": {
+      "type": "string",
+      "pattern": "^GPS-[0-9]{4}-[0-9]{3}$",
+      "description": "Unique reference code, e.g. GPS-2026-001"
+    },
+    "title": { "type": "string" },
+    "titleGu": { "type": "string" },
+    "abstract": { "type": "string" },
+    "domain": {
+      "type": "string",
+      "enum": [
+        "Healthcare Workers & Trauma",
+        "Scale Validation & Psychometrics",
+        "Perinatal & Postpartum Health",
+        "Student Well-being & Adolescents",
+        "Care Seeking & Rural Psychiatry",
+        "Geriatric & Cognitive Aging"
+      ]
+    },
+    "subDiscipline": { "type": "string" },
+    "piName": { "type": "string" },
+    "piDesignation": { "type": "string" },
+    "institution": { "type": "string" },
+    "institutionalEmail": { "type": "string", "format": "email" },
+    "coInvestigators": { "type": "string" },
+    "languages": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "completionMinutes": { "type": "integer", "minimum": 1, "maximum": 120 },
+    "cohortLabel": { "type": "string" },
+    "cohortType": {
+      "type": "string",
+      "enum": [
+        "Doctors/Nurses/Hospital Staff",
+        "General Community/Adults",
+        "Postpartum Women",
+        "Adolescents & University Students"
+      ]
+    },
+    "eligibility": { "type": "string" },
+    "iecName": { "type": "string" },
+    "iecRegNo": { "type": "string" },
+    "iecApprovalDate": { "type": "string", "format": "date" },
+    "iecExpiry": { "type": "string", "format": "date" },
+    "platform": { "type": "string" },
+    "surveyUrl": { "type": "string", "format": "uri" },
+    "startDate": { "type": "string", "format": "date" },
+    "endDate": { "type": "string", "format": "date" },
+    "status": {
+      "type": "string",
+      "enum": ["active", "archived", "pending", "rejected"]
+    },
+    "verifiedOn": { "type": "string" }
+  }
+}

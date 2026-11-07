@@ -1,0 +1,93 @@
+{
+  "siteName": "GujPsychSurvey",
+  "siteSubtitle": "Mental Health Research Repository",
+  "isSampleData": true,
+  "showPiEmail": false,
+  "maintainer": {
+    "name": "[Maintainer Name]",
+    "affiliation": "[Department / Institution]",
+    "email": "contact@your-domain.example"
+  },
+  "moderatorEmail": "moderator@your-domain.example",
+  "reviewTimeText": "Protocols are reviewed by the honorary moderator panel within 3 to 5 working days.",
+  "scalesRepoUrl": "https://github.com/example/gujpsy-scales",
+  "submission": {
+    "mode": "mailto",
+    "googleFormActionUrl": "",
+    "entryMap": {
+      "studyTitle": "entry.1000001",
+      "researchDomain": "entry.1000002",
+      "subDiscipline": "entry.1000003",
+      "abstract": "entry.1000004",
+      "piName": "entry.1000005",
+      "academicDesignation": "entry.1000006",
+      "institutionName": "entry.1000007",
+      "institutionalEmail": "entry.1000008",
+      "contactPhone": "entry.1000009",
+      "coInvestigators": "entry.1000010",
+      "iecName": "entry.1000011",
+      "iecRegNumber": "entry.1000012",
+      "approvalDate": "entry.1000013",
+      "validityExpiry": "entry.1000014",
+      "iecLetterUrl": "entry.1000015",
+      "languages": "entry.1000016",
+      "completionTime": "entry.1000017",
+      "surveyPlatform": "entry.1000018",
+      "externalUrl": "entry.1000019",
+      "eligibilityCriteria": "entry.1000020",
+      "startDate": "entry.1000021",
+      "closeDate": "entry.1000022"
+    }
+  },
+  "participantJoin": {
+    "mode": "mailto",
+    "googleFormActionUrl": "",
+    "entryMap": {
+      "email": "entry.2000001",
+      "fullName": "entry.2000002",
+      "preferredLanguage": "entry.2000003",
+      "topics": "entry.2000004"
+    }
+  },
+  "helplines": [
+    {
+      "name": "Tele-MANAS (Govt of India)",
+      "number": "14416 / 1800-891-4416",
+      "tel": "14416",
+      "hours": "24/7 Free & Confidential",
+      "note": "Available in Gujarati, Hindi, English & 20 regional languages"
+    },
+    {
+      "name": "KIRAN Mental Health Helpline",
+      "number": "1800-599-0019",
+      "tel": "18005990019",
+      "hours": "24/7 Toll-Free Support",
+      "note": "Operated by Department of Empowerment of Persons with Disabilities"
+    },
+    {
+      "name": "Emergency Services",
+      "number": "112",
+      "tel": "112",
+      "hours": "Immediate Life-Threatening Crisis",
+      "note": "National Emergency Response Support System (ERSS)"
+    }
+  ],
+  "resources": [
+    {
+      "title": "ICMR National Ethical Guidelines (2017)",
+      "url": "https://ethics.ncdirindia.org"
+    },
+    {
+      "title": "Standard Informed Consent Template (English & Gujarati)",
+      "url": "submit.html#resources"
+    },
+    {
+      "title": "Participant Information Sheet (PIS) Checklist",
+      "url": "submit.html#resources"
+    },
+    {
+      "title": "Digital Personal Data Protection (DPDP) Research Guidelines",
+      "url": "submit.html#resources"
+    }
+  ]
+}

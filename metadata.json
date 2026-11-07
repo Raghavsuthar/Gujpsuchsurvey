@@ -1,0 +1,6 @@
+{
+  "name": "GujPsychSurvey",
+  "description": "Moderated public directory of psychiatry, mental health research surveys and validated scales in Gujarat and India.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

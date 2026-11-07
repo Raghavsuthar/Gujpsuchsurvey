@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light">
+  <title>Archived Surveys — GujPsychSurvey Mental Health Repository</title>
+  <meta name="description" content="Explore concluded and historical psychiatric research surveys in Gujarat and India. For bibliographic and reference purposes.">
+  <meta property="og:title" content="Archived Mental Health Research Surveys — GujPsychSurvey">
+  <meta property="og:description" content="Completed research records and closed protocols in psychiatry and psychology.">
+
+  <!-- Fonts & Styles -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Noto+Sans+Gujarati:wght@400;500;600;700&family=Noto+Sans:wght@400;500;600;700&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/tailwind-config.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="/scripts.js" defer></script>
+</head>
+<body class="bg-slate-50 text-slate-900 flex flex-col min-h-screen">
+
+  <div id="nav-placeholder"></div>
+
+  <!-- Persistent Crisis Banner -->
+  <div class="crisis-banner bg-rose-50 border-l-4 border-rose-600 px-4 py-3">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 text-xs sm:text-sm text-rose-950">
+      <div class="flex items-center gap-2">
+        <span class="material-symbols-outlined text-rose-600 text-lg shrink-0">emergency</span>
+        <span data-i18n="crisis_banner_text">In immediate emotional distress? Free, 24/7 confidential crisis support is available.</span>
+      </div>
+      <div class="flex items-center gap-2 shrink-0">
+        <a href="tel:14416" class="btn-crisis text-xs py-1.5 px-3 h-8 min-h-0">
+          <span class="material-symbols-outlined text-sm">call</span>
+          <span class="tabular-nums font-bold">Tele-MANAS 14416</span>
+        </a>
+        <a href="tel:18005990019" class="btn-secondary text-xs py-1.5 px-3 h-8 min-h-0 bg-white text-rose-700 border-rose-300">
+          <span class="tabular-nums font-bold">KIRAN 1800-599-0019</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <main id="main-content" class="flex-grow py-8 sm:py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Breadcrumb -->
+      <nav class="flex items-center gap-2 text-xs text-slate-500 mb-4" aria-label="Breadcrumb">
+        <a href="index.html" class="hover:underline">Home</a>
+        <span>/</span>
+        <span class="text-slate-800 font-semibold" aria-current="page">Archived Surveys</span>
+      </nav>
+
+      <!-- Page Header -->
+      <div class="mb-8">
+        <span class="badge-pill badge-archived mb-3">
+          <span class="material-symbols-outlined text-xs">inventory_2</span>
+          Concluded & Historical Records
+        </span>
+        <h1 class="headline-xl text-slate-900 font-extrabold tracking-tight mb-2">
+          Archived Psychiatric & Mental Health Surveys
+        </h1>
+        <p class="body-md text-slate-600 max-w-3xl">
+          Historical records of concluded research surveys preserved for academic reference, replication transparency, and citation documentation. Response links are inactive.
+        </p>
+      </div>
+
+      <!-- Main Layout -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        
+        <!-- Left 8/12: Filter Panel + Table/Cards -->
+        <div class="lg:col-span-8 space-y-6">
+          
+          <!-- Filter Panel -->
+          <div class="card-elevation-1 p-6 bg-white border border-slate-200 rounded-2xl space-y-5">
+            
+            <div class="relative">
+              <span class="material-symbols-outlined absolute left-3.5 top-3 text-slate-400">search</span>
+              <input 
+                id="survey-search-input" 
+                type="text" 
+                class="w-full pl-10 pr-10 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-indigo-600 text-slate-900"
+                placeholder="Search archived title, PI, institution, ref no., or keywords..."
+                data-i18n-placeholder="filters.search_placeholder"
+              >
+              <button id="survey-search-clear" type="button" class="hidden absolute right-3 top-2.5 text-slate-400 hover:text-slate-600 text-sm p-1" aria-label="Clear search">
+                &times;
+              </button>
+            </div>
+
+            <!-- Dynamic Selects Row -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 text-xs">
+              <div>
+                <label for="domain-filter-select" class="block font-semibold text-slate-700 mb-1" data-i18n="filters.domain_label">Research Domain</label>
+                <select id="domain-filter-select" class="w-full p-2 bg-slate-50 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-600 text-slate-900">
+                  <option value="all" data-i18n="filters.all_domains">All Research Domains</option>
+                </select>
+              </div>
+
+              <div>
+                <label for="language-filter-select" class="block font-semibold text-slate-700 mb-1" data-i18n="filters.language_label">Language</label>
+                <select id="language-filter-select" class="w-full p-2 bg-slate-50 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-600 text-slate-900">
+                  <option value="all" data-i18n="filters.all_languages">All Languages</option>
+                  <option value="English">English</option>
+                  <option value="ગુજરાતી">ગુજરાતી</option>
+                  <option value="हिन्दी">हिन्दी</option>
+                </select>
+              </div>
+
+              <div>
+                <label for="time-filter-select" class="block font-semibold text-slate-700 mb-1" data-i18n="filters.time_label">Estimated Time</label>
+                <select id="time-filter-select" class="w-full p-2 bg-slate-50 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-600 text-slate-900">
+                  <option value="all" data-i18n="filters.any_time">Any Duration</option>
+                  <option value="<10" data-i18n="filters.under_10">Under 10 mins</option>
+                  <option value="10-15" data-i18n="filters.between_10_15">10 - 15 mins</option>
+                  <option value=">15" data-i18n="filters.over_15">Over 15 mins</option>
+                </select>
+              </div>
+
+              <div>
+                <label for="cohort-filter-select" class="block font-semibold text-slate-700 mb-1" data-i18n="filters.cohort_label">Target Cohort</label>
+                <select id="cohort-filter-select" class="w-full p-2 bg-slate-50 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-600 text-slate-900">
+                  <option value="all" data-i18n="filters.all_cohorts">All Cohorts</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="flex flex-wrap items-center justify-between gap-3 pt-2 border-t border-slate-100 text-xs">
+              <span class="text-slate-500 font-medium">Historical records archive</span>
+              <button id="reset-filters-btn" type="button" class="text-indigo-600 font-semibold hover:underline" data-i18n="filters.reset">
+                Reset All Filters
+              </button>
+            </div>
+
+            <div id="active-filter-chips" class="flex flex-wrap gap-2 empty:hidden"></div>
+          </div>
+
+          <div class="flex items-center justify-between text-xs text-slate-600 px-1">
+            <span id="table-result-count" class="font-semibold">Loading archived records...</span>
+            <span class="italic">Participation links closed upon survey conclusion</span>
+          </div>
+
+          <!-- Desktop Table -->
+          <div class="hidden sm:block card-elevation-1 bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm">
+            <div class="overflow-x-auto">
+              <table class="w-full text-left border-collapse">
+                <thead class="bg-slate-100 border-b border-slate-200 sticky top-0 text-[11px] font-bold uppercase tracking-wider text-slate-700">
+                  <tr>
+                    <th scope="col" class="px-4 py-3 whitespace-nowrap" data-i18n="table.ref">REF</th>
+                    <th scope="col" class="px-4 py-3" data-i18n="table.synopsis">Study Synopsis & Principal Investigator</th>
+                    <th scope="col" class="px-4 py-3 whitespace-nowrap" data-i18n="table.cohort_time">Cohort & Time</th>
+                    <th scope="col" class="px-4 py-3" data-i18n="table.languages">Languages</th>
+                    <th scope="col" class="px-4 py-3 whitespace-nowrap" data-i18n="table.clearance">IEC Clearance</th>
+                    <th scope="col" class="px-4 py-3 text-right" data-i18n="table.participation">Status</th>
+                  </tr>
+                </thead>
+                <tbody id="surveysTableBody"></tbody>
+              </table>
+            </div>
+
+            <div id="table-empty-state" class="hidden p-12 text-center space-y-4">
+              <span class="material-symbols-outlined text-4xl text-slate-400">search_off</span>
+              <p class="text-sm font-semibold text-slate-700" data-i18n="filters.no_results">No archived studies match the criteria.</p>
+              <button onclick="document.getElementById('reset-filters-btn').click()" class="btn-secondary text-xs py-2 px-4 h-auto min-h-0">
+                Clear all filters
+              </button>
+            </div>
+
+            <div id="table-pagination" class="border-t border-slate-100"></div>
+          </div>
+
+          <!-- Mobile Cards Container -->
+          <div id="surveysMobileContainer" class="sm:hidden space-y-4"></div>
+
+        </div>
+
+        <!-- Right 4/12 Sidebars -->
+        <div class="lg:col-span-4 space-y-6">
+          
+          <div class="card-elevation-1 p-6 bg-white border border-slate-200 rounded-2xl space-y-4">
+            <div class="flex items-center gap-2 text-slate-800 font-bold text-sm">
+              <span class="material-symbols-outlined text-indigo-700">history_edu</span>
+              <span>Archival & Replication Policy</span>
+            </div>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              When a study reaches its target sample or its IEC approval period concludes, its listing moves to this archive. Investigators may request re-activation upon providing renewed IEC renewal documentation.
+            </p>
+          </div>
+
+          <div class="card-elevation-1 p-6 bg-white border border-slate-200 rounded-2xl space-y-4">
+            <h3 class="text-xs font-bold uppercase tracking-wider text-slate-800">
+              Archived Cohort Distribution
+            </h3>
+            <div id="cohort-donut-chart-container"></div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+</body>
+</html>

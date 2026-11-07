@@ -1,0 +1,22 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "GujPsychScaleRecord",
+  "type": "object",
+  "required": ["name", "abbreviation", "domain", "gujaratiStatus", "hindiStatus"],
+  "properties": {
+    "name": { "type": "string" },
+    "abbreviation": { "type": "string" },
+    "domain": { "type": "string" },
+    "items": { "type": "integer" },
+    "gujaratiStatus": {
+      "type": "string",
+      "enum": ["published", "unknown", "unpublished"]
+    },
+    "hindiStatus": {
+      "type": "string",
+      "enum": ["published", "unknown", "unpublished"]
+    },
+    "authors": { "type": "string" },
+    "link": { "type": "string" }
+  }
+}

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light">
+  <title>Get Help & Crisis Helplines — GujPsychSurvey</title>
+  <meta name="description" content="Free, 24/7 confidential mental health helplines in Gujarat and India: Tele-MANAS (14416), KIRAN (1800-599-0019), and immediate crisis steps.">
+  <meta property="og:title" content="Get Help & Mental Health Helplines — GujPsychSurvey">
+  <meta property="og:description" content="24/7 National and Gujarat mental health support. If you are in emotional distress, free professional support is one call away.">
+
+  <!-- Fonts & Styles -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Noto+Sans+Gujarati:wght@400;500;600;700&family=Noto+Sans:wght@400;500;600;700&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/tailwind-config.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="/scripts.js" defer></script>
+</head>
+<body class="bg-slate-50 text-slate-900 flex flex-col min-h-screen">
+
+  <div id="nav-placeholder"></div>
+
+  <main id="main-content" class="flex-grow py-8 sm:py-12">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+      
+      <!-- Breadcrumb -->
+      <nav class="flex items-center gap-2 text-xs text-slate-500" aria-label="Breadcrumb">
+        <a href="index.html" class="hover:underline">Home</a>
+        <span>/</span>
+        <span class="text-slate-800 font-semibold" aria-current="page">Get Help</span>
+      </nav>
+
+      <!-- Emergency Warning Top Banner -->
+      <div class="p-6 bg-rose-600 text-white rounded-2xl shadow-md space-y-3">
+        <div class="flex items-center gap-2 font-bold text-base sm:text-lg">
+          <span class="material-symbols-outlined text-2xl">emergency</span>
+          <span>Are you or someone you know in immediate danger?</span>
+        </div>
+        <p class="text-xs sm:text-sm text-rose-100 leading-relaxed">
+          GujPsychSurvey is an academic research discovery repository. <strong>We do not provide clinical psychiatric treatment, medical triage, or real-time emergency intervention.</strong> If you are experiencing thoughts of self-harm, severe agitation, or a life-threatening crisis, please immediately call <strong>112 (National Emergency Number)</strong> or reach the nearest hospital emergency department.
+        </p>
+        <div class="pt-2">
+          <a href="tel:112" class="inline-flex items-center gap-2 bg-white text-rose-700 font-bold px-4 py-2 rounded-lg text-xs hover:bg-rose-50 transition">
+            <span class="material-symbols-outlined text-sm">local_hospital</span>
+            <span>Call Emergency Services: 112</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Free 24/7 Helplines Section (Loaded dynamically from config.json) -->
+      <section class="space-y-6">
+        <div>
+          <span class="badge-pill bg-rose-100 text-rose-800 font-bold mb-2">
+            24/7 Toll-Free Support
+          </span>
+          <h1 class="headline-xl text-slate-900 font-extrabold tracking-tight mb-2">
+            Mental Health Helplines Across India & Gujarat
+          </h1>
+          <p class="body-md text-slate-600">
+            Free, confidential, and professional tele-counseling is available around the clock in Gujarati, Hindi, and English.
+          </p>
+        </div>
+
+        <div id="helpline-cards-container" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- Populated by scripts.js from config.json -->
+        </div>
+      </section>
+
+      <!-- What to Do Right Now (Gentle Grounding Steps) -->
+      <section class="card-elevation-1 p-8 bg-white border border-slate-200 rounded-2xl space-y-6">
+        <div>
+          <h2 class="headline-md font-bold text-slate-900 mb-2">
+            What to Do Right Now: Gentle Steps for Acute Distress
+          </h2>
+          <p class="text-xs text-slate-600">
+            If you are overwhelmed, pause and take small, grounded actions one moment at a time.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 text-xs">
+          <div class="p-4 bg-slate-50 rounded-xl space-y-2 border border-slate-200">
+            <div class="w-8 h-8 rounded-full bg-indigo-100 text-indigo-700 font-bold flex items-center justify-center font-mono">1</div>
+            <h3 class="font-bold text-slate-900 text-sm">Pause & Breathe</h3>
+            <p class="text-slate-500">Inhale slowly for 4 seconds, hold for 4 seconds, and exhale for 6 seconds. Repeat 5 times.</p>
+          </div>
+
+          <div class="p-4 bg-slate-50 rounded-xl space-y-2 border border-slate-200">
+            <div class="w-8 h-8 rounded-full bg-teal-100 text-teal-700 font-bold flex items-center justify-center font-mono">2</div>
+            <h3 class="font-bold text-slate-900 text-sm">Ground Your Senses</h3>
+            <p class="text-slate-500">Name 5 things you can see, 4 you can touch, 3 you can hear, 2 you can smell, and 1 you can taste.</p>
+          </div>
+
+          <div class="p-4 bg-slate-50 rounded-xl space-y-2 border border-slate-200">
+            <div class="w-8 h-8 rounded-full bg-rose-100 text-rose-700 font-bold flex items-center justify-center font-mono">3</div>
+            <h3 class="font-bold text-slate-900 text-sm">Connect with Someone</h3>
+            <p class="text-slate-500">Call a trusted friend, family member, mentor, or dial the Tele-MANAS helpline at 14416.</p>
+          </div>
+
+          <div class="p-4 bg-slate-50 rounded-xl space-y-2 border border-slate-200">
+            <div class="w-8 h-8 rounded-full bg-indigo-100 text-indigo-700 font-bold flex items-center justify-center font-mono">4</div>
+            <h3 class="font-bold text-slate-900 text-sm">Postpone Decisions</h3>
+            <p class="text-slate-500">Give yourself permission to defer all major decisions until tomorrow morning or until after speaking to a doctor.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- When to Seek Help Checklist -->
+      <section class="card-elevation-1 p-8 bg-white border border-slate-200 rounded-2xl space-y-4">
+        <h2 class="headline-md font-bold text-slate-900">
+          When to Seek Professional Consultation
+        </h2>
+        <p class="text-xs text-slate-600">
+          Consider scheduling an appointment with a registered psychiatrist or clinical psychologist if you notice:
+        </p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-slate-700">
+          <div class="flex items-center gap-2 p-3 bg-slate-50 border border-slate-100 rounded-lg">
+            <span class="material-symbols-outlined text-rose-600 text-sm shrink-0">check_box</span>
+            <span>Persistent sadness, emptiness, or tearfulness lasting over 2 weeks</span>
+          </div>
+          <div class="flex items-center gap-2 p-3 bg-slate-50 border border-slate-100 rounded-lg">
+            <span class="material-symbols-outlined text-rose-600 text-sm shrink-0">check_box</span>
+            <span>Severe insomnia, early morning awakenings, or unrefreshing sleep</span>
+          </div>
+          <div class="flex items-center gap-2 p-3 bg-slate-50 border border-slate-100 rounded-lg">
+            <span class="material-symbols-outlined text-rose-600 text-sm shrink-0">check_box</span>
+            <span>Sudden panic attacks, rapid heartbeat, or feeling loss of control</span>
+          </div>
+          <div class="flex items-center gap-2 p-3 bg-slate-50 border border-slate-100 rounded-lg">
+            <span class="material-symbols-outlined text-rose-600 text-sm shrink-0">check_box</span>
+            <span>Loss of interest in hobbies, occupational burnout, or social withdrawal</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Non-Diagnostic Self-Reflection Scales Link -->
+      <div class="p-6 bg-slate-100 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
+        <div class="space-y-1">
+          <span class="font-bold text-sm text-slate-900 block">Looking for validated clinical questionnaires for self-reflection?</span>
+          <span class="text-slate-500">Explore the directory of translated mental health rating scales (PHQ-9, GAD-7, EPDS, PSQI) used in research.</span>
+        </div>
+        <a href="scales.html" class="btn-secondary shrink-0 text-xs py-2 px-4 h-auto min-h-0">
+          <span>Explore Scales Directory</span>
+          <span class="material-symbols-outlined text-sm">arrow_forward</span>
+        </a>
+      </div>
+
+    </div>
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+</body>
+</html>
